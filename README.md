@@ -25,3 +25,5 @@ var pwdppp = "**********";
 SSID = HEXABYTE_********
 WPA = ********
 ```
+
+This script is provided as-is without warranty of any kind and is intended for educational purposes only.
