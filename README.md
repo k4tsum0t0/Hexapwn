@@ -1,10 +1,10 @@
 # Hexapwn
 test your hexabyte router for security issues
 
-usage"""
+usage :
 
-
- _   _                                    
+```
+_   _                                    
 | | | | _____  ____ _ _ ____      ___ __  
 | |_| |/ _ \ \/ / _` | '_ \ \ /\ / / '_ \ 
 |  _  |  __/>  < (_| | |_) \ V  V /| | | |
@@ -23,6 +23,4 @@ var pwdppp = "**********";
 [+] extracting Wireless conf ...
 SSID = HEXABYTE_********
 WPA = ********
-
-
-"""
+```
