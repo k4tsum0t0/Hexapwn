@@ -1,5 +1,6 @@
 # Hexapwn
-test your hexabyte router for security issues
+this script exploit multi zero days discovered on the hexabyte default router.
+more details about the vulnerabilities and protection will be discussed on our blog.
 
 usage :
 
