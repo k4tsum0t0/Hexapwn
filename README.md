@@ -1,6 +1,8 @@
 # Hexapwn
 this script exploit multi zero days discovered on the hexabyte default router.
-more details about the vulnerabilities and protection will be discussed on our blog.
+Check this blog post for more details:
+http://www.katsumoto-security.com/blog/index.php/2016/10/16/hexapwn-vulnerabilities-that-affect-thousands-of-hexabyte-customers/
+
 
 usage :
 
